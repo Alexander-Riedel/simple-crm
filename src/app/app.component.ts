@@ -11,7 +11,16 @@ import { RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MatToolbarModule, 
+    MatButtonModule, 
+    MatIconModule, 
+    MatSidenavModule, 
+    MatListModule, 
+    RouterModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
