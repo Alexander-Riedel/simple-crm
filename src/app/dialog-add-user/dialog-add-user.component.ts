@@ -33,13 +33,15 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 export class DialogAddUserComponent {
 
   user = new User();
-  birthDate: Date = new Date();
+  birthDate: Date | null = null;
   loading = false;
 
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, private firestore: Firestore) { }
 
   async saveUser() {
-    this.user.birthDate = this.birthDate.getTime();
+    if (this.birthDate) {
+      this.user.birthDate = this.birthDate.getTime();
+    }
     this.loading = true;
 
     try {
