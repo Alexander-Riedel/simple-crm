@@ -11,9 +11,15 @@
 }
 
 .logo-container {
-    min-height: 64px;
-    padding: 0 16px;
+    height: 64px;
+    padding: 0;
+    margin: 0;
     border-bottom-color: var(--mat-sidenav-container-divider-color);
     border-bottom-width: 1px;
     border-bottom-style: solid;
+
+    img {
+        width: 100%;
+        cursor: pointer;
+    }
 }
