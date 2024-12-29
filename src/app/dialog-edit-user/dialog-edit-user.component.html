@@ -1,0 +1,70 @@
+<div class="dialog-container">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <h1 mat-dialog-title>Add user</h1>
+    <div mat-dialog-content>
+
+        <form>
+
+            <div class="d-f-g16">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.firstName" name="First Name" matInput placeholder="">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.lastName" name="Last Name" matInput placeholder="">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline">
+                <mat-label>E-Mail</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.email" name="E-Mail" matInput placeholder="">
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Birth Date</mat-label>
+                <input [disabled]="loading" [(ngModel)]="birthDate" name="Birth Date" matInput [matDatepicker]="picker"
+                    placeholder="{{ birthDate }}">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Street + No.</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.street" name="Street + No." matInput placeholder="">
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+
+            <div class="d-f-g16">
+                <mat-form-field appearance="outline">
+                    <mat-label>Zip Code</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.zipCode" name="Zip Code" matInput placeholder="">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input [disabled]="loading" [(ngModel)]="user.city" name="City" matInput placeholder="">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="dialogRef.close()">Cancel</button>
+        <button mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+    </div>
+
+</div>
