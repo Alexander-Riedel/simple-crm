@@ -5,8 +5,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Firestore, collection, collectionSnapshots } from '@angular/fire/firestore';
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -17,28 +19,33 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
     MatTooltipModule,
     MatDialogModule,
     MatNativeDateModule,
-    MatTableModule
+    MatCardModule,
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
-  dataSource = new MatTableDataSource<any>();
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'street', 'zipCode', 'city'];
+
+  users: any;
 
   constructor(public dialog: MatDialog, private firestore: Firestore) { }
 
   ngOnInit(): void {
     const usersCollection = collection(this.firestore, 'users');
-    collectionData(usersCollection).subscribe((changes: any[]) => {
-      console.log('Received changes from DB', changes);
-      this.dataSource.data = changes;
+    collectionSnapshots(usersCollection).subscribe((changes: any[]) => {
+      this.users = changes.map(snapshot => ({
+        id: snapshot.id,
+        ...snapshot.data()
+      }));
     });
   }
 
   openDialog() {
     const buttonElement = document.activeElement as HTMLElement;
     buttonElement.blur();
+
     this.dialog.open(DialogAddUserComponent);
   }
 }

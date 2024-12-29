@@ -1,47 +1,22 @@
 <div class="user-container">
+    <mat-card>
+        <mat-card-content>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <!-- First Name Column -->
-        <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef>First Name</th>
-            <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
-        </ng-container>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>E-Mail</th>
+                    <th>City</th>
+                </tr>
+                <tr *ngFor="let user of users" [routerLink]="['/user/' + user.id]">
+                    <td>{{ user.lastName }}, {{ user.firstName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.city }}</td>
+                </tr>
+            </table>
 
-        <!-- Last Name Column -->
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef>Last Name</th>
-            <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
-        </ng-container>
-
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef>Email</th>
-            <td mat-cell *matCellDef="let row">{{ row.email }}</td>
-        </ng-container>
-
-        <!-- Street Column -->
-        <ng-container matColumnDef="street">
-            <th mat-header-cell *matHeaderCellDef>Street</th>
-            <td mat-cell *matCellDef="let row">{{ row.street }}</td>
-        </ng-container>
-
-        <!-- ZIP Code Column -->
-        <ng-container matColumnDef="zipCode">
-            <th mat-header-cell *matHeaderCellDef>ZIP Code</th>
-            <td mat-cell *matCellDef="let row">{{ row.zipCode }}</td>
-        </ng-container>
-
-        <!-- City Column -->
-        <ng-container matColumnDef="city">
-            <th mat-header-cell *matHeaderCellDef>City</th>
-            <td mat-cell *matCellDef="let row">{{ row.city }}</td>
-        </ng-container>
-
-        <!-- Header and Row Definitions -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
+        </mat-card-content>
+    </mat-card>
 </div>
 
 <button (click)="openDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add user"
