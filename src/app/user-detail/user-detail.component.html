@@ -2,21 +2,15 @@
 
     <mat-card class="user-detail-header-container">
         <mat-card-content class="user-detail-header">
-
             <img src="assets/img/profile-picture.svg" alt="">
             <div class="user-detail-header-details">
                 <h2>{{ user.firstName }} {{ user.lastName }}</h2>
                 <span>{{ user.email }}</span>
             </div>
-
         </mat-card-content>
     </mat-card>
 
     <mat-card class="user-address-container">
-        <button mat-icon-button (click)="openAddressDialog()">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-
         <mat-card-header>
             <mat-card-title>
                 Address
@@ -29,3 +23,8 @@
     </mat-card>
 
 </div>
+
+<button (click)="editUser()" class="edit-user-btn" mat-fab color="primary" matTooltip="Edit user"
+    matTooltipPosition="above">
+    <mat-icon>edit</mat-icon>
+</button>

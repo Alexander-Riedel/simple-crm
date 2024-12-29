@@ -42,7 +42,7 @@ export class UserComponent {
     });
   }
 
-  openDialog() {
+  addUser() {
     const buttonElement = document.activeElement as HTMLElement;
     buttonElement.blur();
 

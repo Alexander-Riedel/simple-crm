@@ -6,6 +6,12 @@
     padding: 16px;
     background-color: rgb(11, 97, 97);
     color: white;
+
+    button {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+    }
 }
 
 .user-detail-header {
@@ -43,4 +49,10 @@
         right: 4px;
         top: 4px;
     }
+}
+
+.edit-user-btn {
+    position: fixed;
+    right: 64px;
+    bottom: 64px;
 }
