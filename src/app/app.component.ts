@@ -7,18 +7,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Router } from '@angular/router';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  providers: [
+    MatNativeDateModule,
+  ],
   imports: [
     CommonModule,
     RouterOutlet,
-    MatToolbarModule, 
-    MatButtonModule, 
-    MatIconModule, 
-    MatSidenavModule, 
-    MatListModule, 
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
     RouterModule
   ],
   templateUrl: './app.component.html',
